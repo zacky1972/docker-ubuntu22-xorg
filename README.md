@@ -1,6 +1,6 @@
 # docker-ubuntu22-xorg
 
-Dockerfile for Ubuntu 22.04 with xorg.
+Dockerfile for Ubuntu 22.04 on x86_64 with xorg.
 
 ## Installation
 
