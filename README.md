@@ -1,5 +1,7 @@
 # docker-ubuntu-xorg
 
+Dockerfile for Ubuntu 22.04 with xorg.
+
 ## Installation
 
 1. `brew install orbstack xquartz`
