@@ -1,6 +1,6 @@
-FROM --platform=linux/x86_64 ubuntu:22.04
+FROM --platform=${BUILDPLATFORM} ubuntu:22.04
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 RUN \
@@ -8,13 +8,9 @@ RUN \
   apt-get upgrade -y && \
   apt-get -y install \
     ca-certificates curl sudo xorg dbus dbus-x11 ubuntu-gnome-default-settings gtk2-engines \
-    fonts-freefont-ttf fonts-ubuntu-console fonts-droid-fallback lxappearance && \
-  apt-get autoclean && \
-  apt-get autoremove && \
-  apt-get -y clean && \
-  rm -rf /var/lib/apt/lists/* 
+    fonts-freefont-ttf fonts-ubuntu-console fonts-droid-fallback lxappearance
 
-ENV GOSU_VERSION 1.17
+ENV GOSU_VERSION=1.17
 RUN set -eux; \
   # save list of currently installed packages for later so we can clean up
     savedAptMark="$(apt-mark showmanual)"; \
@@ -42,3 +38,9 @@ RUN set -eux; \
   # verify that the binary works
     gosu --version; \
     gosu nobody true
+  
+RUN \
+  apt-get autoclean && \
+  apt-get autoremove && \
+  apt-get -y clean && \
+  rm -rf /var/lib/apt/lists/* 
