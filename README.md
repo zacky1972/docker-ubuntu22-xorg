@@ -4,7 +4,7 @@ Dockerfile for Ubuntu 22.04 on x86_64 with xorg.
 
 ## Installation
 
-1. `brew install orbstack xquartz`
+1. `brew install xquartz`
 2. `open -a XQuartz`
 3. Open the XQuartz setting in Security, allow connections from network clients.
 4. Restart macOS.
