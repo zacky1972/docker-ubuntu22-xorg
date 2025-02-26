@@ -1,4 +1,4 @@
-FROM --platform=linux/x86_64 ubuntu:22.04
+FROM --platform=${BUILDPLATFORM} ubuntu:22.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
