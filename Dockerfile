@@ -8,11 +8,7 @@ RUN \
   apt-get upgrade -y && \
   apt-get -y install \
     ca-certificates curl sudo xorg dbus dbus-x11 ubuntu-gnome-default-settings gtk2-engines \
-    fonts-freefont-ttf fonts-ubuntu-console fonts-droid-fallback lxappearance && \
-  apt-get autoclean && \
-  apt-get autoremove && \
-  apt-get -y clean && \
-  rm -rf /var/lib/apt/lists/* 
+    fonts-freefont-ttf fonts-ubuntu-console fonts-droid-fallback lxappearance
 
 ENV GOSU_VERSION=1.17
 RUN set -eux; \
@@ -42,3 +38,9 @@ RUN set -eux; \
   # verify that the binary works
     gosu --version; \
     gosu nobody true
+  
+RUN \
+  apt-get autoclean && \
+  apt-get autoremove && \
+  apt-get -y clean && \
+  rm -rf /var/lib/apt/lists/* 
