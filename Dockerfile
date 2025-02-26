@@ -1,6 +1,6 @@
 FROM --platform=${BUILDPLATFORM} ubuntu:22.04
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 RUN \
@@ -14,7 +14,7 @@ RUN \
   apt-get -y clean && \
   rm -rf /var/lib/apt/lists/* 
 
-ENV GOSU_VERSION 1.17
+ENV GOSU_VERSION=1.17
 RUN set -eux; \
   # save list of currently installed packages for later so we can clean up
     savedAptMark="$(apt-mark showmanual)"; \
